@@ -16,6 +16,10 @@ import org.xutils.x;
 
 import java.util.HashMap;
 
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.ContactsPage;
@@ -72,6 +76,14 @@ public class LoginActivity extends Activity {
                 break;
             //快速登录
             case R.id.tv_fast:
+                ShareSDK.initSDK(this);
+                Platform weibo= ShareSDK.getPlatform(SinaWeibo.NAME);
+                weibo.SSOSetting(true);
+                weibo.setPlatformActionListener(paListener);
+                weibo.authorize();
+                //移除授权
+                //weibo.removeAccount(true);
+
                 break;
         }
     }
@@ -80,5 +92,23 @@ public class LoginActivity extends Activity {
         Intent intent=new Intent(LoginActivity.this,RegActivity.class);
         startActivity(intent);
     }
+
+    private PlatformActionListener paListener=new PlatformActionListener() {
+        @Override
+        public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+
+        }
+
+        @Override
+        public void onError(Platform platform, int i, Throwable throwable) {
+
+        }
+
+        @Override
+        public void onCancel(Platform platform, int i) {
+
+        }
+    };
+
 
 }

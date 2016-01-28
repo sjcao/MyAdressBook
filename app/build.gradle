@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.yzbz.myadressbook"
         minSdkVersion 15
-        targetSdkVersion 19
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -29,7 +29,11 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'org.xutils:xutils:3.3.8'
-    compile name:'SMSSDK-2.0.1',ext:'aar'
-    compile name:'SMSSDKGUI-2.0.1',ext:'aar'
-
+    compile name: 'SMSSDK-2.0.1', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.0.1', ext: 'aar'
+    compile files('libs/ShareSDK-Wechat-Moments-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-2.6.6.jar')
+    compile files('libs/ShareSDK-Core-2.6.6.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.6.6.jar')
 }
