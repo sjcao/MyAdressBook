@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yzbz.myadressbook.ui.LoginActivity"
+    >
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@mipmap/bg1"
+        />
+
+    <ImageView
+        android:id="@+id/iv_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/blue" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_login"
+        android:id="@+id/textView"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light" />
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/iv_top"
+        android:layout_alignLeft="@+id/iv_top"
+        android:layout_alignStart="@+id/iv_top"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/txt_phone"
+            android:phoneNumber="true"
+            android:drawableLeft="@mipmap/icon_phone"
+            android:drawablePadding="10dp"
+            android:textSize="14sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/txt_password"
+            android:drawableLeft="@mipmap/icon_lock"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:id="@+id/et_pwd"
+            android:textSize="14sp"
+            android:password="true" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/blue"
+        android:text="@string/txt_login"
+        android:id="@+id/bt_login"
+        android:textColor="@color/light" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/txt_forget"
+        android:id="@+id/tv_forget"
+        android:layout_marginTop="44dp"
+        android:textColor="@color/blue"
+        android:textSize="12sp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignRight="@+id/tv_fast"
+        android:layout_alignEnd="@+id/tv_fast" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/txt_reg"
+        android:id="@+id/tv_reg"
+        android:layout_below="@+id/bt_login"
+        android:layout_alignLeft="@+id/bt_login"
+        android:layout_alignStart="@+id/bt_login"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/light"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/txt_fast"
+        android:id="@+id/tv_fast"
+        android:layout_alignTop="@+id/tv_reg"
+        android:layout_alignRight="@+id/bt_login"
+        android:layout_alignEnd="@+id/bt_login"
+        android:textColor="@color/light"
+        android:textSize="12sp" />
+
+
+
+
+</RelativeLayout>

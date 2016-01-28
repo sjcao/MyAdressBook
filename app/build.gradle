@@ -19,8 +19,17 @@ android {
     productFlavors {
     }
 }
+repositories {
+            flatDir {
+                        dirs 'libs' //lib目录
+            }
+        }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile 'org.xutils:xutils:3.3.8'
+    compile name:'SMSSDK-2.0.1',ext:'aar'
+    compile name:'SMSSDKGUI-2.0.1',ext:'aar'
+
 }
