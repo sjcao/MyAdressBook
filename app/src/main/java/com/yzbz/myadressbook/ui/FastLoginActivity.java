@@ -22,7 +22,7 @@ import cn.sharesdk.tencent.qq.QQ;
 
 public class FastLoginActivity extends Activity {
 
-    private static final int MSG_USERID_FOUND =1 ;
+    private static final int MSG_USERID_FOUND = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +31,18 @@ public class FastLoginActivity extends Activity {
         x.view().inject(this);
         ShareSDK.initSDK(this);
     }
-    @Event({R.id.bt_qqlogin,R.id.bt_sinalogin})
-    private void onClick(View view){
-        switch (view.getId()){
+
+    @Event({R.id.bt_qqlogin, R.id.bt_sinalogin})
+    private void onClick(View view) {
+        switch (view.getId()) {
             case R.id.bt_qqlogin:
-                Platform qq= ShareSDK.getPlatform(QQ.NAME);
+                Platform qq = ShareSDK.getPlatform(QQ.NAME);
                 qq.SSOSetting(false);
                 qq.setPlatformActionListener(paListener);
                 qq.authorize();
                 break;
             case R.id.bt_sinalogin:
-                Platform weibo= ShareSDK.getPlatform(SinaWeibo.NAME);
+                Platform weibo = ShareSDK.getPlatform(SinaWeibo.NAME);
                 weibo.SSOSetting(true);
                 weibo.setPlatformActionListener(paListener);
                 weibo.authorize();
@@ -52,27 +53,28 @@ public class FastLoginActivity extends Activity {
         }
 
     }
-    private PlatformActionListener paListener=new PlatformActionListener() {
+
+    private PlatformActionListener paListener = new PlatformActionListener() {
         @Override
         public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                if(platform==null) {
+            if (platform == null) {
+                return;
+            }
+//判断指定平台是否已经完成授权
+            if (platform.isAuthValid()) {
+                String userId = platform.getDb().getUserId();
+                if (userId != null) {
+                    UIHandler.sendEmptyMessage(MSG_USERID_FOUND, new Handler.Callback() {
+                        @Override
+                        public boolean handleMessage(Message msg) {
+                            return false;
+                        }
+                    });
+                    login(platform.getName(), userId, null);
                     return;
                 }
-//判断指定平台是否已经完成授权
-                if(platform.isAuthValid()) {
-                    String userId = platform.getDb().getUserId();
-                    if (userId != null) {
-                        UIHandler.sendEmptyMessage(MSG_USERID_FOUND, new Handler.Callback() {
-                            @Override
-                            public boolean handleMessage(Message msg) {
-                                return false;
-                            }
-                        });
-                        login(platform.getName(), userId, null);
-                        return;
-                    }
-                }
-}
+            }
+        }
 
 
         @Override
@@ -90,8 +92,6 @@ public class FastLoginActivity extends Activity {
         //在这里进行数据的验证
 
     }
-
-
 
 
 }

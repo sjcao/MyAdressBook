@@ -8,4 +8,11 @@
     <string name="txt_fast">无账号快捷登录</string>
     <string name="txt_sinaweibo">新浪微博登录</string>
     <string name="txt_qq">腾讯qq登录</string>
+    <string name="txt_inputphone">请输入手机号码</string>
+    <string name="txt_seed">发送</string>
+    <string name="txt_inputnewpwd">请输入新的密码</string>
+    <string name="txt_comfirepwd">请再次输入密码</string>
+    <string name="txt_commit">提交</string>
+    <string name="txt_inputpwd">请输入密码</string>
+    <string name="txt_code">请输入接收的验证码</string>
 </resources>

@@ -17,5 +17,94 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/light" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_top"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/relativeLayout">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="phone"
+        android:id="@+id/et_phone"
+        android:hint="@string/txt_inputphone"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@mipmap/icon_phone"
+        />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="@string/txt_seed"
+            android:id="@+id/bt_send"
+            android:background="@color/blue"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="textPassword"
+        android:password="true"
+        android:id="@+id/et_newpwd"
+        android:hint="@string/txt_inputnewpwd"
+        android:drawableLeft="@mipmap/icon_lock"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/et_code"
+        android:layout_alignStart="@+id/et_code"
+        android:layout_alignRight="@+id/et_code"
+        android:layout_alignEnd="@+id/et_code" />
+
+    <EditText
+        android:drawablePadding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="textPassword"
+        android:password="true"
+        android:id="@+id/et_comfirpwd"
+        android:hint="@string/txt_comfirepwd"
+        android:drawableLeft="@mipmap/icon_lock"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/et_newpwd"
+        android:layout_alignLeft="@+id/et_newpwd"
+        android:layout_alignStart="@+id/et_newpwd"
+        android:layout_alignRight="@+id/et_newpwd"
+        android:layout_alignEnd="@+id/et_newpwd" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/txt_commit"
+        android:id="@+id/bt_commit"
+        android:layout_marginTop="40dp"
+        android:background="@color/blue"
+        android:layout_below="@+id/et_comfirpwd"
+        android:layout_alignLeft="@+id/et_comfirpwd"
+        android:layout_alignStart="@+id/et_comfirpwd"
+        android:layout_alignRight="@+id/et_comfirpwd"
+        android:layout_alignEnd="@+id/et_comfirpwd" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/et_code"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignLeft="@+id/relativeLayout"
+        android:layout_alignStart="@+id/relativeLayout"
+        android:layout_marginTop="27dp"
+        android:layout_alignRight="@+id/relativeLayout"
+        android:layout_alignEnd="@+id/relativeLayout"
+        android:hint="@string/txt_code" />
 
 </RelativeLayout>
