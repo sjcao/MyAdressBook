@@ -36,4 +36,5 @@ dependencies {
     compile files('libs/ShareSDK-Core-2.6.6.jar')
     compile files('libs/ShareSDK-SinaWeibo-2.6.6.jar')
     compile files('libs/ShareSDK-Wechat-Core-2.6.6.jar')
+    compile files('libs/ShareSDK-QQ-2.6.6.jar')
 }

@@ -76,14 +76,8 @@ public class LoginActivity extends Activity {
                 break;
             //快速登录
             case R.id.tv_fast:
-                ShareSDK.initSDK(this);
-                Platform weibo= ShareSDK.getPlatform(SinaWeibo.NAME);
-                weibo.SSOSetting(true);
-                weibo.setPlatformActionListener(paListener);
-                weibo.authorize();
-                //移除授权
-                //weibo.removeAccount(true);
-
+                Intent intent1=new Intent(LoginActivity.this,FastLoginActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -93,22 +87,6 @@ public class LoginActivity extends Activity {
         startActivity(intent);
     }
 
-    private PlatformActionListener paListener=new PlatformActionListener() {
-        @Override
-        public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-
-        }
-
-        @Override
-        public void onError(Platform platform, int i, Throwable throwable) {
-
-        }
-
-        @Override
-        public void onCancel(Platform platform, int i) {
-
-        }
-    };
 
 
 }
