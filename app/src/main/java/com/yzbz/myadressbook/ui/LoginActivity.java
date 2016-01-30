@@ -43,11 +43,9 @@ public class LoginActivity extends Activity {
         switch (view.getId()){
             //登录按钮
             case R.id.bt_login:
-//                //打开通信录好友列表页面
-//                Log.d("login_touch","login_touch");
-//                ContactsPage contactsPage = new ContactsPage();
-//                contactsPage.show(this);
-
+                Intent intent2=new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(intent2);
+                finish();
                 break;
             //忘记密码
             case R.id.tv_forget:

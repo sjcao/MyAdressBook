@@ -55,7 +55,8 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".ui.FastLoginActivity"></activity>
+        <activity android:name=".ui.FastLoginActivity" />
+        <activity android:name=".ui.HomeActivity"></activity>
     </application>
 
 </manifest>

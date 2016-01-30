@@ -15,4 +15,10 @@
     <string name="txt_commit">提交</string>
     <string name="txt_inputpwd">请输入密码</string>
     <string name="txt_code">请输入接收的验证码</string>
+    <string name="txt_home">首页</string>
+    <string name="txt_contacts">联系人</string>
+    <string name="txt_me">我的</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

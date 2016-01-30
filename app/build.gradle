@@ -20,15 +20,14 @@ android {
     }
 }
 repositories {
-            flatDir {
-                        dirs 'libs' //lib目录
-            }
-        }
+    flatDir {
+        dirs 'libs' //lib目录
+    }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'org.xutils:xutils:3.3.8'
     compile name: 'SMSSDK-2.0.1', ext: 'aar'
     compile name: 'SMSSDKGUI-2.0.1', ext: 'aar'
     compile files('libs/ShareSDK-Wechat-Moments-2.6.6.jar')
@@ -37,4 +36,6 @@ dependencies {
     compile files('libs/ShareSDK-SinaWeibo-2.6.6.jar')
     compile files('libs/ShareSDK-Wechat-Core-2.6.6.jar')
     compile files('libs/ShareSDK-QQ-2.6.6.jar')
+    compile 'org.xutils:xutils:3.3.8'
+    compile 'com.android.support:support-v4:19.1.0'
 }
