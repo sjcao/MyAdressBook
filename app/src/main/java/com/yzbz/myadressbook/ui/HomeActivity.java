@@ -2,11 +2,13 @@ package com.yzbz.myadressbook.ui;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,6 +34,8 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
     private Button bt_personal;
     @ViewInject(R.id.bt_group)
     private Button bt_group;
+    @ViewInject(R.id.bt_right_menu)
+    private Button bt_right_menu;
 
     private Fragment homeFragment;
     private Fragment contactsFragment;
@@ -60,17 +64,17 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
                     case R.id.bt_home:
                         tv_title.setVisibility(View.VISIBLE);
                         bt_switch.setVisibility(View.GONE);
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
                     case R.id.bt_contacts:
                         tv_title.setVisibility(View.GONE);
                         bt_switch.setVisibility(View.VISIBLE);
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, contactsFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, contactsFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
                     case R.id.bt_me:
                         tv_title.setVisibility(View.GONE);
                         bt_switch.setVisibility(View.GONE);
-                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, meFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, meFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
                 }
             }
@@ -95,19 +99,22 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
         }
 
     }
-    @Event({R.id.bt_personal,R.id.bt_group})
+    @Event({R.id.bt_personal,R.id.bt_group,R.id.bt_right_menu})
     private void onClick(View view){
         switch (view.getId()){
             case R.id.bt_personal:
                 bt_personal.setBackgroundResource(R.mipmap.baike_btn_pink_left_f_96);
                 bt_group.setBackgroundResource(R.mipmap.baike_btn_trans_right_f_96);
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,contactsFragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,contactsFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                 break;
 
             case R.id.bt_group:
                 bt_personal.setBackgroundResource(R.mipmap.baike_btn_trans_left_f_96);
                 bt_group.setBackgroundResource(R.mipmap.baike_btn_pink_right_f_96);
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container,groupFragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container,groupFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
+                break;
+            case R.id.bt_right_menu:
+                resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
                 break;
         }
     }

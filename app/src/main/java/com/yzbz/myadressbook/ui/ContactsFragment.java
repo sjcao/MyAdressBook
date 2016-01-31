@@ -59,11 +59,14 @@ public class ContactsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     private void initView() {
+        View headView=LayoutInflater.from(getActivity()).inflate(R.layout.layout_head_search,null);
         lv_contacts= (ListView) getView().findViewById(R.id.lv_contacts);
         lv_contacts.setAdapter(new AdapterContacts(getActivity()));
+        lv_contacts.addHeaderView(headView);
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

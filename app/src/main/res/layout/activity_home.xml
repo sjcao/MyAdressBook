@@ -6,6 +6,14 @@
     tools:context="com.yzbz.myadressbook.ui.HomeActivity">
     <include layout="@layout/layout_actionbar"
         android:id="@+id/include" />
+    <Button
+        android:layout_width="38dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/icon_right_menu"
+        android:id="@+id/bt_right_menu"
+        android:layout_marginTop="10dp"
+         />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

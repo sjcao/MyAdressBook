@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yzbz.myadressbook.R;
@@ -70,6 +71,15 @@ public class GroupFragment extends Fragment {
     private void initView() {
         lv_group= (ListView) getView().findViewById(R.id.lv_group);
         lv_group.setAdapter(new AdapterGroup(getActivity()));
+        lv_group.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //获取点击项的信息
+                AdapterGroup adapterGroup= (AdapterGroup) parent.getAdapter();
+                adapterGroup.getItem(position);
+
+            }
+        });
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

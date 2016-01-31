@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -90,8 +91,8 @@ public class HomeFragment extends Fragment {
                 return checkContentCanBePulledDown(frame, content, header);
                 //return super.checkCanDoRefresh(frame, content, header);
             }
-
         });
+
     }
 
     @Override
