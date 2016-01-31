@@ -7,7 +7,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
 import com.yzbz.myadressbook.R;
+import com.yzbz.myadressbook.ui.adapter.AdapterHome;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 
 /**
@@ -29,6 +39,8 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private ListView lv_home;
+    private PtrFrameLayout ptrFrameLayout;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +71,33 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+    }
+
+    private void initView() {
+        lv_home= (ListView) getView().findViewById(R.id.lv_home);
+        lv_home.setAdapter(new AdapterHome(getActivity()));
+
+        ptrFrameLayout= (PtrFrameLayout) getView().findViewById(R.id.rotate_header_list_view_frame);
+        ptrFrameLayout.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+
+            }
+
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return checkContentCanBePulledDown(frame, content, header);
+                //return super.checkCanDoRefresh(frame, content, header);
+            }
+
+        });
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
     }
 
     @Override

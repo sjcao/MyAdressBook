@@ -6,8 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.yzbz.myadressbook.R;
+import com.yzbz.myadressbook.ui.adapter.AdapterGroup;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,9 @@ public class GroupFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ListView lv_group;
+
+
 
 
     public GroupFragment() {
@@ -55,6 +66,17 @@ public class GroupFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    private void initView() {
+        lv_group= (ListView) getView().findViewById(R.id.lv_group);
+        lv_group.setAdapter(new AdapterGroup(getActivity()));
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

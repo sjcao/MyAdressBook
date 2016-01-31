@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.special.ResideMenu.ResideMenu;
+import com.special.ResideMenu.ResideMenuItem;
 import com.yzbz.myadressbook.R;
 
 import org.xutils.view.annotation.Event;
@@ -34,6 +37,8 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
     private Fragment contactsFragment;
     private Fragment meFragment;
     private Fragment groupFragment;
+
+    private ResideMenu resideMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +75,25 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
                 }
             }
         });
+
+        // attach to current activity;
+        resideMenu = new ResideMenu(this);
+        resideMenu.setBackground(R.mipmap.bg1);
+        resideMenu.attachToActivity(this);
+        //resideMenu.openMenu(ResideMenu.DIRECTION_LEFT); // or ResideMenu.DIRECTION_RIGHT
+        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
+        //resideMenu.closeMenu();
+
+        // create menu items;
+        String titles[] = { "Home", "Profile", "Calendar", "Settings" };
+        int icon[] = { R.drawable.ssdk_oks_logo_qq, R.drawable.ssdk_oks_logo_sinaweibo, R.drawable.ssdk_oks_logo_wechat, R.drawable.ssdk_oks_logo_wechatmoments };
+
+        for (int i = 0; i < titles.length; i++){
+            ResideMenuItem item = new ResideMenuItem(this, icon[i], titles[i]);
+            //item.setOnClickListener(this);
+            resideMenu.addMenuItem(item,  ResideMenu.DIRECTION_LEFT); // or  ResideMenu.DIRECTION_RIGHT
+        }
+
     }
     @Event({R.id.bt_personal,R.id.bt_group})
     private void onClick(View view){
@@ -90,5 +114,11 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    //侧滑菜单
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return resideMenu.dispatchTouchEvent(ev);
     }
 }

@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.yzbz.myadressbook.R;
+import com.yzbz.myadressbook.ui.adapter.AdapterContacts;
+
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +28,7 @@ public class ContactsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private ListView lv_contacts;
 
     public ContactsFragment() {
         // Required empty public constructor
@@ -55,6 +60,17 @@ public class ContactsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+    private void initView() {
+        lv_contacts= (ListView) getView().findViewById(R.id.lv_contacts);
+        lv_contacts.setAdapter(new AdapterContacts(getActivity()));
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
