@@ -1,5 +1,6 @@
 package com.yzbz.myadressbook.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,11 +9,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.special.ResideMenu.ResideMenu;
@@ -128,4 +126,6 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return resideMenu.dispatchTouchEvent(ev);
     }
+
+
 }

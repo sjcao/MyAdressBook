@@ -13,5 +13,9 @@
 
     </ListView>
 
+    <com.yzbz.myadressbook.ui.SideBar
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|top" />
 
 </FrameLayout>

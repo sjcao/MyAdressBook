@@ -24,4 +24,8 @@
     <string name="txt_personal">个人</string>
     <string name="txt_group">群组</string>
     <string name="txt_search">搜索</string>
+    <string name="txt_personInfo">个人信息</string>
+    <string name="txt_username">用户名</string>
+    <string name="bt_seed_mes">发消息</string>
+    <string name="txt_group_info">群组信息</string>
 </resources>

@@ -2,17 +2,26 @@ package com.yzbz.myadressbook.ui;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.yzbz.myadressbook.R;
 import com.yzbz.myadressbook.ui.adapter.AdapterContacts;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +38,8 @@ public class ContactsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private ListView lv_contacts;
+    private SearchView searchView;
+    private AdapterContacts adapter;
 
     public ContactsFragment() {
         // Required empty public constructor
@@ -63,10 +74,51 @@ public class ContactsFragment extends Fragment {
     }
 
     private void initView() {
-        View headView=LayoutInflater.from(getActivity()).inflate(R.layout.layout_head_search,null);
+        View headView= LayoutInflater.from(getActivity()).inflate(R.layout.layout_head_search,null);
+        searchView= (SearchView) headView.findViewById(R.id.searchView);
         lv_contacts= (ListView) getView().findViewById(R.id.lv_contacts);
-        lv_contacts.setAdapter(new AdapterContacts(getActivity()));
+        final List<String> testData=new ArrayList<String>();
+        for (int i=0;i<10;i++) {
+            testData.add("Jaykey");
+            testData.add("John");
+            testData.add("Adapi");
+        }
+        adapter=new AdapterContacts(getActivity(),testData);
+        lv_contacts.setAdapter(adapter);
+        lv_contacts.setTextFilterEnabled(true);
         lv_contacts.addHeaderView(headView);
+
+        searchView.setFocusable(false);
+        searchView.setIconifiedByDefault(false);
+        searchView.setSubmitButtonEnabled(false);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText==null||newText.length()==0) {
+                    lv_contacts.clearTextFilter();
+                    //adapter.setDataList(testData);
+                    //adapter.notifyDataSetChanged();
+                }
+                else {
+                    lv_contacts.setFilterText(newText);
+                }
+                return true;
+            }
+        });
+
+        lv_contacts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(getActivity(),PersonInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

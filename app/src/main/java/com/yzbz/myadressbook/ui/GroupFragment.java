@@ -2,6 +2,7 @@ package com.yzbz.myadressbook.ui;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,6 +78,8 @@ public class GroupFragment extends Fragment {
                 //获取点击项的信息
                 AdapterGroup adapterGroup= (AdapterGroup) parent.getAdapter();
                 adapterGroup.getItem(position);
+                Intent intent=new Intent(getActivity(),GroupInfoActivity.class);
+                startActivity(intent);
 
             }
         });

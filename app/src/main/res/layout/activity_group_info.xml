@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yzbz.myadressbook.ui.GroupInfoActivity">
+    <include layout="@layout/layout_actionbar" android:id="@+id/actionbarLayout"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_group_info"
+        android:id="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/light" />
+
+    <Button
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:background="@mipmap/icon_back"
+        android:layout_marginTop="5dp"
+        android:id="@+id/bt_back" />
+    <TextView
+        android:layout_below="@id/actionbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="公告区域"
+        android:background="@color/redsina"
+        android:id="@+id/gonggao"/>
+
+</RelativeLayout>
