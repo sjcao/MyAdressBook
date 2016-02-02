@@ -78,11 +78,12 @@ public class ContactsFragment extends Fragment {
         searchView= (SearchView) headView.findViewById(R.id.searchView);
         lv_contacts= (ListView) getView().findViewById(R.id.lv_contacts);
         final List<String> testData=new ArrayList<String>();
-        for (int i=0;i<10;i++) {
+
             testData.add("Jaykey");
             testData.add("John");
             testData.add("Adapi");
-        }
+            testData.add("Bdasa");
+
         adapter=new AdapterContacts(getActivity(),testData);
         lv_contacts.setAdapter(adapter);
         lv_contacts.setTextFilterEnabled(true);

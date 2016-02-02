@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.yzbz.myadressbook.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class AdapterContacts extends BaseAdapter implements Filterable {
 
     public AdapterContacts(Context context, List<String> dataList) {
         this.dataList = dataList;
+        Collections.sort(dataList); //排序
         mInflater = LayoutInflater.from(context);
         originaList=new ArrayList<String>(dataList);
     }
