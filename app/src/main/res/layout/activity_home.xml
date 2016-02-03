@@ -4,51 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.yzbz.myadressbook.ui.HomeActivity">
-    <include layout="@layout/layout_actionbar"
-        android:id="@+id/include" />
-    <Button
-        android:layout_width="38dp"
-        android:layout_height="30dp"
-        android:background="@mipmap/icon_right_menu"
-        android:id="@+id/bt_right_menu"
-        android:layout_marginTop="10dp"
-         />
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/bt_switch">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:text="@string/txt_personal"
             android:id="@+id/bt_personal"
             android:background="@mipmap/baike_btn_pink_left_f_96" />
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:text="@string/txt_group"
             android:id="@+id/bt_group"
             android:background="@mipmap/baike_btn_trans_right_f_96"
             android:layout_gravity="center_horizontal|top" />
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_home"
-        android:id="@+id/tv_title"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/light" />
     <FrameLayout
+        android:layout_below="@+id/bt_switch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragment_container"
-        android:layout_below="@+id/include"
         android:layout_above="@+id/line">
 
     </FrameLayout>

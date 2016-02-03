@@ -52,8 +52,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.RegActivity" />
-        <activity android:name=".ui.ForgetActivity" />
+        <activity android:name=".ui.RegActivity"
+            android:theme="@style/BackActionTheme"/>
+        <activity android:name=".ui.ForgetActivity"
+            android:theme="@style/BackActionTheme"/>
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -76,11 +78,10 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".ui.FastLoginActivity" />
-        <activity android:name=".ui.HomeActivity"
-            />
-        <activity android:name=".ui.PersonInfoActivity" />
-        <activity android:name=".ui.GroupInfoActivity"></activity>
+        <activity android:name=".ui.FastLoginActivity" android:theme="@style/BackActionTheme"/>
+        <activity android:name=".ui.HomeActivity" android:theme="@style/ActionTheme"/>
+        <activity android:name=".ui.PersonInfoActivity" android:theme="@style/BackActionTheme"/>
+        <activity android:name=".ui.GroupInfoActivity" android:theme="@style/BackActionTheme"></activity>
 
         <!-- Required SDK核心功能-->
         <activity

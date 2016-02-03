@@ -1,10 +1,12 @@
 package com.yzbz.myadressbook.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +38,7 @@ public class ForgetActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
         x.view().inject(this);
-
+        initView();
         SMSSDK.registerEventHandler(new EventHandler() {
             @Override
             public void afterEvent(int event, int result, Object data) {
@@ -109,5 +111,22 @@ public class ForgetActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         SMSSDK.unregisterAllEventHandler();
+    }
+    private void initView() {
+        ActionBar actionBar=getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setTitle("返回");
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

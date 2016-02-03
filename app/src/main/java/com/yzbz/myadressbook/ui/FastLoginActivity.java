@@ -1,9 +1,11 @@
 package com.yzbz.myadressbook.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.mob.tools.utils.UIHandler;
@@ -30,6 +32,7 @@ public class FastLoginActivity extends Activity {
         setContentView(R.layout.activity_fast_login);
         x.view().inject(this);
         ShareSDK.initSDK(this);
+        initView();
     }
 
     @Event({R.id.bt_qqlogin, R.id.bt_sinalogin})
@@ -91,6 +94,23 @@ public class FastLoginActivity extends Activity {
     private void login(String name, String userId, Object o) {
         //在这里进行数据的验证
 
+    }
+    private void initView() {
+        ActionBar actionBar=getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setTitle("返回");
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

@@ -4,23 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.yzbz.myadressbook.ui.ForgetActivity">
-    <ImageView
-        android:id="@+id/iv_top"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/blue" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_forget"
-        android:id="@+id/textView"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/light" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_top"
         android:drawablePadding="10dp"
         android:layout_marginTop="51dp"
         android:layout_marginLeft="20dp"

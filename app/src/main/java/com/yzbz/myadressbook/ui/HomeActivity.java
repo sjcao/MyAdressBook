@@ -6,6 +6,9 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -26,14 +29,10 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
     private RadioGroup radioGroup;
     @ViewInject(R.id.bt_switch)
     private LinearLayout bt_switch;
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
     @ViewInject(R.id.bt_personal)
     private Button bt_personal;
     @ViewInject(R.id.bt_group)
     private Button bt_group;
-    @ViewInject(R.id.bt_right_menu)
-    private Button bt_right_menu;
 
     private Fragment homeFragment;
     private Fragment contactsFragment;
@@ -50,6 +49,8 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
 
     private void initView() {
         x.view().inject(this);
+        initActionBar();
+        bt_switch.setVisibility(View.GONE);
         homeFragment=new HomeFragment();
         contactsFragment=new ContactsFragment();
         meFragment=new MeFragment();
@@ -60,17 +61,14 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.bt_home:
-                        tv_title.setVisibility(View.VISIBLE);
                         bt_switch.setVisibility(View.GONE);
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
                     case R.id.bt_contacts:
-                        tv_title.setVisibility(View.GONE);
                         bt_switch.setVisibility(View.VISIBLE);
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container, contactsFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
                     case R.id.bt_me:
-                        tv_title.setVisibility(View.GONE);
                         bt_switch.setVisibility(View.GONE);
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container, meFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
                         break;
@@ -97,7 +95,14 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
         }
 
     }
-    @Event({R.id.bt_personal,R.id.bt_group,R.id.bt_right_menu})
+
+    private void initActionBar() {
+        ActionBar actionBar=getActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setIcon(R.mipmap.icon_right_menu);
+    }
+
+    @Event({R.id.bt_personal,R.id.bt_group})
     private void onClick(View view){
         switch (view.getId()){
             case R.id.bt_personal:
@@ -110,9 +115,6 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
                 bt_personal.setBackgroundResource(R.mipmap.baike_btn_trans_left_f_96);
                 bt_group.setBackgroundResource(R.mipmap.baike_btn_pink_right_f_96);
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container,groupFragment).setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).commit();
-                break;
-            case R.id.bt_right_menu:
-                resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
                 break;
         }
     }
@@ -127,5 +129,21 @@ public class HomeActivity extends Activity implements HomeFragment.OnFragmentInt
         return resideMenu.dispatchTouchEvent(ev);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
 
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

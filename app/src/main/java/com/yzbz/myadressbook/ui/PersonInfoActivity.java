@@ -1,7 +1,9 @@
 package com.yzbz.myadressbook.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.yzbz.myadressbook.R;
@@ -15,11 +17,24 @@ public class PersonInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_info);
-        x.view().inject(this);
+        initView();
     }
-    @Event({R.id.bt_back})
-    private void onClick(View view){
-        this.finish();
+    private void initView() {
+        ActionBar actionBar=getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setTitle("返回");
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

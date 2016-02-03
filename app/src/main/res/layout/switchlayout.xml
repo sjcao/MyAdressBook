@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_centerHorizontal="true"
+    android:visibility="visible"
+    android:id="@+id/bt_switch"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_personal"
+            android:id="@+id/bt_personal"
+            android:background="@mipmap/baike_btn_pink_left_f_96" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_group"
+            android:id="@+id/bt_group"
+            android:background="@mipmap/baike_btn_trans_right_f_96"
+            android:layout_gravity="center_horizontal|top" />
+    </LinearLayout>
+
